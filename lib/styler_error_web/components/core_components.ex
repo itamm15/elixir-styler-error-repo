@@ -16,8 +16,10 @@ defmodule StylerErrorWeb.CoreComponents do
   """
   use Phoenix.Component
 
-  alias Phoenix.LiveView.JS
   import StylerErrorWeb.Gettext
+
+  alias Phoenix.HTML.FormField
+  alias Phoenix.LiveView.JS
 
   @doc """
   Renders a modal.
@@ -277,7 +279,7 @@ defmodule StylerErrorWeb.CoreComponents do
     values: ~w(checkbox color date datetime-local email file hidden month number password
                range radio search select tel text textarea time url week)
 
-  attr :field, Phoenix.HTML.FormField,
+  attr :field, FormField,
     doc: "a form field struct retrieved from the form, for example: @form[:email]"
 
   attr :errors, :list, default: []
@@ -292,7 +294,7 @@ defmodule StylerErrorWeb.CoreComponents do
 
   slot :inner_block
 
-  def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+  def input(%{field: %FormField{} = field} = assigns) do
     assigns
     |> assign(field: nil, id: assigns.id || field.id)
     |> assign(:errors, Enum.map(field.errors, &translate_error(&1)))

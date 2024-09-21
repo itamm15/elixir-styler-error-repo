@@ -19,15 +19,15 @@ defmodule StylerErrorWeb.ConnCase do
 
   using do
     quote do
+      use StylerErrorWeb, :verified_routes
+
+      import Phoenix.ConnTest
+      import Plug.Conn
+      import StylerErrorWeb.ConnCase
       # The default endpoint for testing
       @endpoint StylerErrorWeb.Endpoint
 
-      use StylerErrorWeb, :verified_routes
-
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import StylerErrorWeb.ConnCase
     end
   end
 
