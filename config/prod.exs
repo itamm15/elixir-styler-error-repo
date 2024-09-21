@@ -7,8 +7,7 @@ import Config
 # before starting your production server.
 config :logger, level: :info
 
-config :styler_error, StylerErrorWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+config :styler_error, StylerErrorWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: StylerError.Finch
